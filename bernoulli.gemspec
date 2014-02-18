@@ -10,5 +10,8 @@ Gem::Specification.new do |s|
   s.homepage    =
       'http://github.com/joeyg'
   s.license       = 'MIT'
-  s.add_runtime_dependency 'http', '0.5.0'
+  s.add_runtime_dependency 'http', '>= 0.5.0'
+  s.add_development_dependency 'rspec', '>= 2.14.1'
+  s.add_development_dependency 'webmock', '>= 1.17.3'
+  s.test_files = ['tests/tests.rb']
 end
