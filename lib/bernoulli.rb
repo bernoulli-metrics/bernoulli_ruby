@@ -2,7 +2,7 @@ require 'rest_client'
 require 'json'
 
 class Bernoulli
-  URL = 'http://localhost:5000/client/api/experiments/'
+  URL = 'https://bernoulli.herokuapp.com/client/api/experiments/'
 
   def self.get_experiments(client_id, experiment_ids, user_id, segment_data, should_bucket=true)
     if client_id == nil
