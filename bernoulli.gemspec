@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
-  s.name        = 'bernoulli'
-  s.version     = '0.0.0'
+  s.name        = 'bernoulli-metrics'
+  s.version     = '0.0.1'
   s.date        = '2014-02-17'
   s.summary     = "Ruby gem for Bernoulli"
   s.description = "Bernoulli a/b testing platform"
