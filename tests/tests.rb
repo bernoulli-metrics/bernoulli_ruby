@@ -21,7 +21,7 @@ describe Bernoulli  do
             :id => 32
         }]
     }
-    stub_request(:get, "http://localhost:5000/client/api/experiments/?clientId=1&experimentIds=first&segmentData=&shouldBucketIfNecessary=true&userId=user59").to_return(
+    stub_request(:get, "https://bernoulli.herokuapp.com/client/api/experiments/?clientId=1&experimentIds=first&segmentData=&shouldBucketIfNecessary=true&userId=user59").to_return(
         :body => ret_val.to_json)
 
     response = Bernoulli.get_experiments(1, 'first', 'user59', nil, true)
@@ -35,7 +35,7 @@ describe Bernoulli  do
         :message => 'invalid clientId',
     }
 
-    stub_request(:get, "http://localhost:5000/client/api/experiments/?clientId=1&experimentIds=first&segmentData=&shouldBucketIfNecessary=true&userId=user59").to_return(
+    stub_request(:get, "https://bernoulli.herokuapp.com/client/api/experiments/?clientId=1&experimentIds=first&segmentData=&shouldBucketIfNecessary=true&userId=user59").to_return(
         :body => ret_val.to_json)
 
     has_thrown = false
@@ -54,7 +54,7 @@ describe Bernoulli  do
         :value => true,
     }
 
-    stub_request(:post, "http://localhost:5000/client/api/experiments/").to_return(
+    stub_request(:post, "https://bernoulli.herokuapp.com/client/api/experiments/").to_return(
         :body => ret_val.to_json)
 
     response = Bernoulli.goal_attained(1, 'first', 'user59')

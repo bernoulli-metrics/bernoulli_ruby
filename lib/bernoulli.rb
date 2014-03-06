@@ -6,7 +6,10 @@ class Bernoulli
 
   def self.get_experiments(client_id, experiment_ids, user_id, segment_data, should_bucket=true)
     if client_id == nil
-      raise ArgumentError, 'client_id'
+      client_id = ENV['BERNOULLI_CLIENT_ID']
+      if client_id == nil
+        raise ArgumentError, 'client_id'
+      end
     end
 
     if experiment_ids.kind_of?(Array)
