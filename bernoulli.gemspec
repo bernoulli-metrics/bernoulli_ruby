@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'bernoulli-metrics'
-  s.version     = '0.0.2'
-  s.date        = '2014-02-17'
+  s.version     = '0.0.3'
+  s.date        = '2014-03-05'
   s.summary     = "Ruby gem for Bernoulli"
   s.description = "Bernoulli a/b testing platform"
   s.authors     = ["Joe Gasiorek"]

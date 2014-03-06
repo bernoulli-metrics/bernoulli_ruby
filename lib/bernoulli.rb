@@ -38,6 +38,13 @@ class Bernoulli
   end
 
   def self.goal_attained(client_id, experiment_id, user_id)
+    if client_id == nil
+      client_id = ENV['BERNOULLI_CLIENT_ID']
+      if client_id == nil
+        raise ArgumentError, 'client_id'
+      end
+    end
+    
     response = RestClient.post(URL, {
         :clientId => client_id,
         :experimentId => experiment_id,
