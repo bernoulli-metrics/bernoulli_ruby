@@ -4,7 +4,7 @@ require 'json'
 class Bernoulli
   URL = 'https://bernoulli.herokuapp.com/client/api/experiments/'
 
-  def self.get_experiments(client_id, experiment_ids, user_id, segment_data, should_bucket=true)
+  def self.get_experiments(experiment_ids, user_id, client_id=nil, segment_data=nil, should_bucket=true)
     if client_id == nil
       client_id = ENV['BERNOULLI_CLIENT_ID']
       if client_id == nil
@@ -37,14 +37,14 @@ class Bernoulli
 
   end
 
-  def self.goal_attained(client_id, experiment_id, user_id)
+  def self.goal_attained(experiment_id, user_id, client_id=nil)
     if client_id == nil
       client_id = ENV['BERNOULLI_CLIENT_ID']
       if client_id == nil
         raise ArgumentError, 'client_id'
       end
     end
-    
+
     response = RestClient.post(URL, {
         :clientId => client_id,
         :experimentId => experiment_id,

@@ -6,7 +6,7 @@ describe Bernoulli  do
   it 'throws when no client_id is given' do
     has_thrown = false
     begin
-      Bernoulli.get_experiments(nil, 'first', 'user59', nil, true)
+      Bernoulli.get_experiments('first', 'user59', nil, nil, true)
     rescue
       has_thrown = true
     end
@@ -24,7 +24,7 @@ describe Bernoulli  do
     stub_request(:get, "https://bernoulli.herokuapp.com/client/api/experiments/?clientId=1&experimentIds=first&segmentData=&shouldBucketIfNecessary=true&userId=user59").to_return(
         :body => ret_val.to_json)
 
-    response = Bernoulli.get_experiments(1, 'first', 'user59', nil, true)
+    response = Bernoulli.get_experiments('first', 'user59', 1, nil, true)
     response.length.should eql(1)
     response[0]['id'].should eql(32)
   end
@@ -40,7 +40,7 @@ describe Bernoulli  do
 
     has_thrown = false
     begin
-      response = Bernoulli.get_experiments(1, 'first', 'user59', nil, true)
+      response = Bernoulli.get_experiments('first', 'user59', 1, nil, true)
     rescue
       has_thrown = true
     end
@@ -57,7 +57,7 @@ describe Bernoulli  do
     stub_request(:post, "https://bernoulli.herokuapp.com/client/api/experiments/").to_return(
         :body => ret_val.to_json)
 
-    response = Bernoulli.goal_attained(1, 'first', 'user59')
+    response = Bernoulli.goal_attained('first', 'user59', 1)
 
     response.should eql(true)
   end
